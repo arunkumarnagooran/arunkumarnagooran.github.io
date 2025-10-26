@@ -1,125 +1,412 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Arunkumar.N- DevOps Engineer</title>
-  <meta name="description" content="Simple portfolio — Your Name. Projects, about and contact." />
-  <style>
-    :root{
-      --bg:#f7f7f9; --card:#ffffff; --accent:#2563eb; --text:#0f1724;
-      --muted:#6b7280; --radius:12px; --gap:20px;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);line-height:1.45}
-    .container{max-width:900px;margin:40px auto;padding:24px}
-    header{display:flex;align-items:center;gap:16px}
-    .avatar{width:72px;height:72px;border-radius:14px;flex:0 0 72px;background:linear-gradient(135deg,var(--accent),#ec4899);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px}
-    h1{margin:0;font-size:28px}
-    p.lead{color:var(--muted);margin:8px 0 0}
-    nav{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
-    a.btn{display:inline-block;padding:8px 12px;border-radius:8px;text-decoration:none;background:var(--accent);color:white;font-weight:600}
-    .grid{display:grid;gap:var(--gap);margin-top:28px}
-    .card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(15,23,36,0.06)}
-    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-    .project-title{font-weight:700;margin:8px 0 4px}
-    .muted{color:var(--muted);font-size:14px}
-    form input, form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9ef;margin-top:8px;font-size:14px}
-    form textarea{min-height:110px;resize:vertical}
-    footer{margin-top:28px;text-align:center;color:var(--muted);font-size:14px}
-    @media (max-width:560px){.avatar{width:58px;height:58px;border-radius:10px;font-size:18px}h1{font-size:22px}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - DevOps Engineer</title>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- tsParticles library for live background --><script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <!-- Devicon CSS for tech logos --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.15.1/devicon.min.css">
+    
+    <!-- === OPTIMIZATION: Moved Google Font load from CSS @import to <link> for faster loading === -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* @import url('...') was removed from here for performance */
+        body {
+            font-family: 'Inter', 'sans-serif';
+            background-color: #111827; /* Dark Gray 900 */
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        /* Removed .btn, .btn-primary, .btn-secondary, .card, and .skill-card as they don't work with the CDN */
+        .tag {
+            @apply inline-block bg-gray-700 text-blue-300 text-xs font-semibold px-3 py-1 rounded-full;
+        }
+
+        /* Particle background container */
+        #particles-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0; /* Behind hero content */
+        }
+
+        /* Animation Classes */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(20px); /* Changed from slide-left to slide-up */
+            transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1); /* Made it a bit faster */
+            transition-delay: var(--delay, 0s);
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0); /* Slide to final position */
+        }
+    </style>
 </head>
-<body>
-  <main class="container" role="main">
-    <header>
-      <div class="avatar" aria-hidden="true">YN</div>
-      <div>
-        <h1>Arunkumar.N</h1>
-        <p class="lead">DevOps Engineer.</p>
-        <nav aria-label="Quick links">
-          <a class="btn" href="#projects">Projects</a>
-          <a class="btn" href="#about" style="background:#111827">About</a>
-          <a class="btn" href="#contact" style="background:#10b981">Contact</a>
+<body class="text-gray-200">
+
+    <!-- Header / Navigation --><header class="sticky top-0 z-50 bg-gray-800/90 backdrop-blur-md border-b border-gray-700">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Your Name / Title --><div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-white">
+                        [Your Name]
+                    </a>
+                </div>
+                <!-- Links (New Order) --><div class="hidden md:flex items-center space-x-6">
+                    <!-- Social Icons --><a href="https://github.com/your-username" target="_blank" class="text-gray-400 hover:text-white transition duration-300" title="GitHub">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.49.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.203 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/your-username" target="_blank" class="text-gray-400 hover:text-white transition duration-300" title="LinkedIn">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.529-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+                    </a>
+                    <!-- Text Links --><a href="#projects" class="font-medium text-gray-300 hover:text-blue-400 transition duration-300">Projects</a>
+                    <!-- Resume Button --><!-- Inlined Tailwind classes from .btn and .btn-primary --><a href="YOUR_RESUME.pdf" download="YourName_DevOps_Resume.pdf" class="px-6 py-2 rounded-lg font-semibold transition duration-300 ease-in-out bg-blue-600 text-white hover:bg-blue-700 shadow-lg hover:shadow-blue-500/50 transform hover:scale-105">
+                        Download Resume
+                    </a>
+                </div>
+            </div>
         </nav>
-      </div>
     </header>
 
-    <section id="projects" class="grid">
-      <div class="card">
-        <h2 style="margin:0 0 8px">Projects</h2>
-        <p class="muted" style="margin:0 0 12px">A few things I built — click to view (replace links).</p>
-        <div class="projects" role="list">
-          <article class="card" role="listitem">
-            <div class="project-title">Portfolio Website</div>
-            <div class="muted">HTML • CSS • JavaScript</div>
-            <p style="margin-top:8px">A simple, responsive portfolio with contact form and project pages.</p>
-            <p style="margin:8px 0 0"><a href="#" aria-label="Open demo">Demo</a> • <a href="#" aria-label="Open code">Code</a></p>
-          </article>
+    <!-- Main Content --><main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <article class="card" role="listitem">
-            <div class="project-title">Todo App</div>
-            <div class="muted">React • LocalStorage</div>
-            <p style="margin-top:8px">Small productivity app with offline-first behaviour.</p>
-            <p style="margin:8px 0 0"><a href="#">Demo</a> • <a href="#">Code</a></p>
-          </article>
+        <!-- Section 1: Hero (Updated Layout) --><!-- Updated padding to pt-10 md:pt-20 pb-32 to push content slightly up from true center --><section class="relative flex flex-col items-center justify-center text-center gap-10 md:gap-12 min-h-screen overflow-hidden px-4 pt-10 md:pt-20 pb-32">
+            <!-- Particle Background --><div id="particles-bg"></div>
+            
+            <!-- Photo Placeholder (Moved first, made smaller for more empty space) --><div class="relative z-10 flex justify-center reveal-on-scroll" style="--delay: 0.2s;">
+                <img src="https://placehold.co/400x400/374151/9ca3af?text=Your+Photo" 
+                     alt="A professional headshot of [Your Name]"
+                     class="rounded-full w-80 h-80 md:w-96 md:h-96 object-cover border-4 border-gray-700 shadow-2xl 
+                            transition-all duration-300 ease-in-out 
+                            hover:scale-105 hover:border-blue-400 hover:shadow-2xl hover:shadow-blue-500/50"
+                     onerror="this.src='https://placehold.co/400x400/374151/9ca3af?text=Image+Error'; this.onerror=null;">
+            </div>
 
-          <article class="card" role="listitem">
-            <div class="project-title">Blog (Jekyll)</div>
-            <div class="muted">Markdown • Static</div>
-            <p style="margin-top:8px">Technical notes and guides; deployed on GitHub Pages.</p>
-            <p style="margin:8px 0 0"><a href="#">Read</a></p>
-          </article>
+            <!-- Text Content (Moved second, removed md:text-left) --><div class="relative z-10 reveal-on-scroll">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white select-none">
+                    DevOps Engineer
+                </h1>
+                <p class="mt-4 text-xl md:text-2xl font-light text-blue-300 text-glow max-w-2xl mx-auto select-none">
+                    "I'm an energetic engineer passionate about building highly available infrastructure and streamlined CI/CD pipelines."
+                </p>
+                <!-- Centered buttons (removed md:justify-start) --><div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <!-- Inlined Tailwind classes from .btn and .btn-primary --><a href="mailto:youremail@example.com" class="px-6 py-2 rounded-lg font-semibold transition duration-300 ease-in-out bg-blue-600 text-white hover:bg-blue-700 shadow-lg hover:shadow-blue-500/50 transform hover:scale-105 w-full sm:w-auto text-lg">
+                        Contact Me: youremail@example.com
+                    </a>
+                    <!-- Inlined Tailwind classes from .btn and .btn-secondary --><a href="#projects" class="px-6 py-2 rounded-lg font-semibold transition duration-300 ease-in-out bg-gray-700 text-gray-200 hover:bg-gray-600 transform hover:scale-105 w-full sm:w-auto text-lg">
+                        See My Work
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Toolchain / Skills (Updated with Logos) --><!-- This section and all below remain identical, creating the "visual cut" --><!-- REMOVED 'reveal-on-scroll' from the section tag to let the child items handle the animation --><section id="skills" class="my-20 md:my-32">
+            <!-- === MODIFIED: Added reveal-on-scroll class === --><h2 class="text-3xl font-bold text-center text-white mb-16 reveal-on-scroll" style="--delay: 0.05s;">
+                My Core Toolchain
+            </h2>
+            <!-- ============================================= --><div class="flex flex-row flex-wrap justify-center gap-6">
+                <!-- AWS --><!-- Inlined Tailwind classes from .skill-card --><div class="w-32 bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-6 text-center transition duration-200 transform hover:scale-110 hover:border-blue-500 group reveal-on-scroll" style="--delay: 0.1s;">
+                    <i class="devicon-amazonwebservices-original text-6xl text-white transition duration-300"></i>
+                    <p class="mt-3 font-semibold text-sm text-white">AWS</p>
+                </div>
+                <!-- Terraform --><!-- Inlined Tailwind classes from .skill-card --><div class="w-32 bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-6 text-center transition duration-200 transform hover:scale-110 hover:border-blue-500 group reveal-on-scroll" style="--delay: 0.15s;">
+                    <i class="devicon-terraform-plain text-6xl text-white transition duration-300"></i>
+                    <p class="mt-3 font-semibold text-sm text-white">Terraform</p>
+                </div>
+                <!-- Docker --><!-- Inlined Tailwind classes from .skill-card --><div class="w-32 bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-6 text-center transition duration-200 transform hover:scale-110 hover:border-blue-500 group reveal-on-scroll" style="--delay: 0.2s;">
+                    <i class="devicon-docker-plain text-6xl text-white transition duration-300"></i>
+                    <p class="mt-3 font-semibold text-sm text-white">Docker</p>
+                </div>
+                <!-- Kubernetes --><!-- Inlined Tailwind classes from .skill-card --><div class="w-32 bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-6 text-center transition duration-200 transform hover:scale-110 hover:border-blue-500 group reveal-on-scroll" style="--delay: 0.25s;">
+                    <i class="devicon-kubernetes-plain text-6xl text-white transition duration-300"></i>
+                    <p class="mt-3 font-semibold text-sm text-white">Kubernetes</p>
+                </div>
+                <!-- Jenkins --><!-- Inlined Tailwind classes from .skill-card --><div class="w-32 bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-6 text-center transition duration-200 transform hover:scale-110 hover:border-blue-500 group reveal-on-scroll" style="--delay: 0.3s;">
+                    <i class="devicon-jenkins-line text-6xl text-white transition duration-300"></i>
+                    <p class="mt-3 font-semibold text-sm text-white">Jenkins</p>
+                </div>
+                <!-- GitHub Actions --><!-- Inlined Tailwind classes from .skill-card --><div class="w-32 bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-6 text-center transition duration-200 transform hover:scale-110 hover:border-blue-500 group reveal-on-scroll" style="--delay: 0.35s;">
+                    <i class="devicon-github-original text-6xl text-white transition duration-300"></i>
+                    <p class="mt-3 font-semibold text-sm text-white">GitHub Actions</p>
+                </div>
+                <!-- Prometheus --><!-- Inlined Tailwind classes from .skill-card --><div class="w-32 bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-6 text-center transition duration-200 transform hover:scale-110 hover:border-blue-500 group reveal-on-scroll" style="--delay: 0.4s;">
+                    <i class="devicon-prometheus-original text-6xl text-white transition duration-300"></i>
+                    <p class="mt-3 font-semibold text-sm text-white">Prometheus</p>
+                </div>
+                <!-- Bash --><!-- Inlined Tailwind classes from .skill-card --><div class="w-32 bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-6 text-center transition duration-200 transform hover:scale-110 hover:border-blue-500 group reveal-on-scroll" style="--delay: 0.45s;">
+                    <i class="devicon-bash-plain text-6xl text-white transition duration-300"></i>
+                    <p class="mt-3 font-semibold text-sm text-white">Bash</p>
+                </div>
+                <!-- Python --><!-- Inlined Tailwind classes from .skill-card --><div class="w-32 bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-6 text-center transition duration-200 transform hover:scale-110 hover:border-blue-500 group reveal-on-scroll" style="--delay: 0.5s;">
+                    <i class="devicon-python-plain text-6xl text-white transition duration-300"></i>
+                    <p class="mt-3 font-semibold text-sm text-white">Python</p>
+                </div>
+                <!-- Git --><!-- Inlined Tailwind classes from .skill-card --><div class="w-32 bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-6 text-center transition duration-200 transform hover:scale-110 hover:border-blue-500 group reveal-on-scroll" style="--delay: 0.55s;">
+                    <i class="devicon-git-plain text-6xl text-white transition duration-300"></i>
+                    <p class="mt-3 font-semibold text-sm text-white">Git</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Projects (The Proof) --><!-- REMOVED 'reveal-on-scroll' from the section tag to let the child items handle the animation --><section id="projects">
+            <!-- === MODIFIED: Added reveal-on-scroll class === --><h2 class="text-4xl font-extrabold text-center text-white mb-16 reveal-on-scroll" style="--delay: 0.05s;">
+                Projects Showcase
+            </h2>
+            <!-- ============================================= -->
+            
+            <!-- 
+                NOTE FOR YOU: For best performance, replace these placeholder images 
+                with real images that are compressed and sized appropriately (e.g., ~600px wide).
+            --><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <!-- Project 1: IaC (Business Value: Speed & Cost) --><!-- Inlined Tailwind classes from .card --><div class="bg-gray-800 border border-gray-700 rounded-xl shadow-2xl transition duration-200 transform hover:scale-105 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/30 flex flex-col reveal-on-scroll" style="--delay: 0.3s;">
+                    <!-- === OPTIMIZATION: Added loading=lazy and onerror fallback === --><img class="w-full h-48 object-cover rounded-t-xl" 
+                         src="https://placehold.co/600x400/1f2937/9ca3af?text=Project+1+Image" 
+                         alt="Project 1 Screenshot"
+                         loading="lazy"
+                         onerror="this.src='https://placehold.co/600x400/1f2937/9ca3af?text=Image+Not+Found'; this.onerror=null;">
+                    <!-- =============================== --><div class="p-8 flex-grow">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-3">Automated AWS Infrastructure</h3>
+                        <p class="text-gray-400 mb-4 text-sm">
+                            <span class="font-bold text-gray-200">The Problem:</span> Manual server setup was slow, expensive, and led to inconsistent environments for developers.
+                        </p>
+                        <p class="text-gray-300 mb-6">
+                            <span class="font-bold text-gray-200">My Solution:</span> Used <span class="text-blue-300">Terraform</span> to write reusable code that provisions a standard AWS VPC, security groups, and EC2 instances. This allows for one-click creation of identical dev, staging, and prod environments.
+                        </p>
+                        
+                        <!-- CEO-Friendly Outcome --><div class="p-4 bg-gray-900 rounded-lg border border-green-500">
+                            <p class="font-bold text-green-400 text-lg">Outcome:</p>
+                            <p class="text-white">Reduced environment setup time from 4 hours to 5 minutes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-900 rounded-b-xl border-t border-gray-700">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tag">Terraform</span>
+                            <span class="tag">AWS</span>
+                            <span class="tag">VPC</span>
+                            <span class="tag">EC2</span>
+                        </div>
+                        <!-- Inlined Tailwind classes from .btn and .btn-secondary --><a href="https://github.com/your-username/aws-terraform-project" target="_blank" class="px-6 py-2 rounded-lg font-semibold transition duration-300 ease-in-out bg-gray-700 text-gray-200 hover:bg-gray-600 transform hover:scale-105 w-full text-center">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: CI/CD (Business Value: Speed & Reliability) --><!-- Inlined Tailwind classes from .card --><div class="bg-gray-800 border border-gray-700 rounded-xl shadow-2xl transition duration-200 transform hover:scale-105 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/30 flex flex-col reveal-on-scroll" style="--delay: 0.4s;">
+                    <!-- === OPTIMIZATION: Added loading=lazy and onerror fallback === --><img class="w-full h-48 object-cover rounded-t-xl" 
+                         src="https://placehold.co/600x400/1f2937/9ca3af?text=Project+2+Image" 
+                         alt="Project 2 Screenshot"
+                         loading="lazy"
+                         onerror="this.src='https://placehold.co/600x400/1f2937/9ca3af?text=Image+Not+Found'; this.onerror=null;">
+                    <!-- =============================== --><div class="p-8 flex-grow">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-3">CI/CD Pipeline for Python App</h3>
+                        <p class="text-gray-400 mb-4 text-sm">
+                            <span class="font-bold text-gray-200">The Problem:</span> Developers were shipping code directly to production. This caused frequent bugs, service downtime, and unhappy customers.
+                        </p>
+                        <p class="text-gray-300 mb-6">
+                            <span class="font-bold text-gray-200">My Solution:</span> Built a <span class="text-blue-300">Jenkins</span> pipeline that triggers on a <span class="text-blue-300">Git</span> push. The pipeline automatically tests the code, builds it into a <span class="text-blue-300">Docker</span> container, and pushes it to a registry, ready for safe deployment.
+                        </p>
+
+                        <!-- CEO-Friendly Outcome --><div class="p-4 bg-gray-900 rounded-lg border border-green-500">
+                            <p class="font-bold text-green-400 text-lg">Outcome:</p>
+                            <p class="text-white">Automated 100% of the testing and build process, cutting deployment-related bugs by 90%.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-900 rounded-b-xl border-t border-gray-700">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tag">Jenkins</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">Python</span>
+                            <span class_name="tag">Git</span>
+                        </div>
+                        <!-- Inlined Tailwind classes from .btn and .btn-secondary --><a href="https://github.com/your-username/jenkins-docker-pipeline" target="_blank" class="px-6 py-2 rounded-lg font-semibold transition duration-300 ease-in-out bg-gray-700 text-gray-200 hover:bg-gray-600 transform hover:scale-105 w-full text-center">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: K8s & Monitoring (Business Value: Reliability) --><!-- Inlined Tailwind classes from .card --><div class="bg-gray-800 border border-gray-700 rounded-xl shadow-2xl transition duration-200 transform hover:scale-105 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/30 flex flex-col reveal-on-scroll" style="--delay: 0.5s;">
+                    <!-- === OPTIMIZATION: Added loading=lazy and onerror fallback === --><img class="w-full h-48 object-cover rounded-t-xl" 
+                         src="https://placehold.co/600x400/1f2937/9ca3af?text=Project+3+Image" 
+                         alt="Project 3 Screenshot"
+                         loading="lazy"
+                         onerror="this.src='https://placehold.co/600x400/1f2937/9ca3af?text=Image+Not+Found'; this.onerror=null;">
+                    <!-- =============================== --><div class="p-8 flex-grow">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-3">K8s Deployment & Monitoring</h3>
+                        <p class="text-gray-400 mb-4 text-sm">
+                            <span class="font-bold text-gray-200">The Problem:</span> The main application would crash under high traffic and the team wouldn't know until users complained.
+                        </p>
+                        <p class="text-gray-300 mb-6">
+                            <span class="font-bold text-gray-200">My Solution:</span> Deployed the containerized application to a <span class="text-blue-300">Kubernetes</span> cluster, enabling it to auto-scale and self-heal. I also configured <span class="text-blue-300">Prometheus</span> to scrape metrics, providing real-time visibility into application health.
+                        </p>
+                        
+                        <!-- CEO-Friendly Outcome --><div class="p-4 bg-gray-900 rounded-lg border border-green-500">
+                            <p class="font-bold text-green-400 text-lg">Outcome:</p>
+                            <p class="text-white">Achieved 99.9% uptime and enabled proactive problem-solving with new health dashboards.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-900 rounded-b-xl border-t border-gray-700">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tag">Kubernetes</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">Prometheus</span>
+                            <span class="tag">GitHub Actions</span>
+                        </div>
+                        <!-- Inlined Tailwind classes from .btn and .btn-secondary --><a href="https://github.com/your-username/k8s-prometheus-demo" target="_blank" class="px-6 py-2 rounded-lg font-semibold transition duration-300 ease-in-out bg-gray-700 text-gray-200 hover:bg-gray-600 transform hover:scale-105 w-full text-center">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer --><footer class="bg-gray-800 border-t border-gray-700 mt-20 md:mt-32">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- === NEW FOOTER DESIGN === --><div class="flex flex-col items-center gap-8 py-16">
+
+                <!-- 1. Social Icons --><div class="flex space-x-8 reveal-on-scroll" style="--delay: 0.1s;">
+                    <a href="https://github.com/your-username" target="_blank" class="text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:-translate-y-1" title="GitHub">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.49.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.203 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/your-username" target="_blank" class="text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:-translate-y-1" title="LinkedIn">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.529-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+                    </a>
+                    <a href="https://your-blog-domain.com" target="_blank" class="text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:-translate-y-1" title="Blog">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 12h6m-3-3h.01M16 7h.01"></path></svg>
+                    </a>
+                </div>
+
+                <!-- 2. "Let's Connect" Button --><div class="text-center reveal-on-scroll" style="--delay: 0.2s;">
+                    <h4 class="text-2xl font-bold text-white mb-3">Interested in collaborating?</h4>
+                    <a href="mailto:youremail@example.com" class="inline-block px-8 py-3 rounded-lg font-semibold transition duration-300 ease-in-out bg-blue-600 text-white hover:bg-blue-700 shadow-lg hover:shadow-blue-500/50 transform hover:scale-105 text-lg">
+                        Get in Touch
+                    </a>
+                    <p class="text-gray-400 text-sm mt-4">
+                        Based in [Your City, Country]
+                    </p>
+                </div>
+
+            </div>
+            <!-- ======================= --><!-- Bottom Copyright / Back to Top --><div class="flex flex-col items-center gap-4 text-center text-gray-500 text-sm py-8 border-t border-gray-700">
+                <a href="#" class="text-blue-400 hover:text-blue-300 font-semibold transition-colors duration-300 reveal-on-scroll" style="--delay: 0.3s;">
+                    ^ Back to Top
+                </a>
+                <p class="reveal-on-scroll" style="--delay: 0.35s;">
+                    &copy; 2025 [Your Name]. Built with Tailwind CSS.
+                </p>
+            </div>
         </div>
-      </div>
-    </section>
-
-    <section id="about" class="grid" aria-labelledby="about-heading">
-      <div class="card">
-        <h2 id="about-heading" style="margin:0 0 8px">About</h2>
-        <p class="muted" style="margin:0 0 12px">Short bio</p>
-        <p>Hi — I'm <strong>Your Name</strong>. I make web interfaces that are friendly, accessible and fast. I like to keep code simple and maintainable. When I'm not coding, I read tech blogs and experiment with small UI ideas.</p>
-        <dl style="margin-top:12px" class="muted">
-          <div><strong>Location:</strong> City, Country</div>
-          <div><strong>Availability:</strong> Freelance & remote work</div>
-        </dl>
-      </div>
-    </section>
-
-    <section id="contact" class="grid" aria-labelledby="contact-heading">
-      <div class="card">
-        <h2 id="contact-heading" style="margin:0 0 8px">Contact</h2>
-        <p class="muted" style="margin:0 0 12px">Send a message — this uses mailto by default.</p>
-
-        <!-- Option A: Simple mailto form (works without a backend) -->
-        <form onsubmit="event.preventDefault(); window.location.href = `mailto:youremail@example.com?subject=${encodeURIComponent(this.name.value+' — Portfolio contact')}&body=${encodeURIComponent(this.message.value + '\\n\\nFrom: ' + this.email.value)}`;">
-          <label style="font-weight:600;font-size:14px">Name</label>
-          <input name="name" required placeholder="Your name" />
-          <label style="font-weight:600;font-size:14px;margin-top:8px;display:block">Email</label>
-          <input name="email" type="email" required placeholder="you@example.com" />
-          <label style="font-weight:600;font-size:14px;margin-top:8px;display:block">Message</label>
-          <textarea name="message" required placeholder="Hi! I'd like to talk about..."></textarea>
-          <div style="display:flex;gap:10px;margin-top:12px;align-items:center">
-            <button class="btn" type="submit">Send Email</button>
-            <small class="muted">Or email directly: <a href="mailto:youremail@example.com">youremail@example.com</a></small>
-          </div>
-        </form>
-
-        <!--
-          Option B (commented):
-          To use a backend API replace the form's onsubmit with a fetch POST call to your API.
-        -->
-      </div>
-    </section>
-
-    <footer class="muted">
-      © <span id="year"></span> Your Name — Built with simple HTML.
     </footer>
-  </main>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <!-- JavaScript for Animations --><script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { 
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            // Observe all elements with the .reveal-on-scroll class
+            document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+                observer.observe(el);
+            });
+            
+            // tsParticles Config - UPDATED FOR "IMPRESSIVE" CONSTELLATION EFFECT
+            tsParticles.load("particles-bg", {
+                "background": {
+                    "color": {
+                        "value": "#111827" // Match the body background
+                    }
+                },
+                "fpsLimit": 60,
+                "interactivity": {
+                    "events": {
+                        "onHover": {
+                            "enable": true,
+                            "mode": "grab" // Creates lines from cursor to particles
+                        },
+                        "onClick": {
+                            "enable": true,
+                            "mode": "push" // Pushes particles away
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140, // How far the "grab" effect reaches
+                            "links": {
+                                "opacity": 1
+                            }
+                        },
+                        "push": {
+                            "quantity": 4 // How many particles to push
+                        }
+                    }
+                },
+                "particles": {
+                    "color": {
+                        "value": "#ffffff"
+                    },
+                    "links": {
+                        "color": "#60a5fa", // Light blue for the links
+                        "distance": 150,
+                        "enable": true, // <-- THIS IS THE KEY CHANGE
+                        "opacity": 0.3, // Subtle links
+                        "width": 1
+                    },
+                    "move": {
+                        "direction": "none",
+                        "enable": true,
+                        "outModes": {
+                            "default": "out" // Particles move around
+                        },
+                        "random": false,
+                        "speed": 1, // Slightly faster movement
+                        "straight": false
+                    },
+                    "number": {
+                        "density": {
+                            "enable": true,
+                            "area": 800
+                        },
+                        "value": 80 // Fewer particles look cleaner with links
+                    },
+                    "opacity": {
+                        "value": 0.5
+                    },
+                    "shape": {
+                        "type": "circle"
+                    },
+                    "size": {
+                        "value": { "min": 1, "max": 3 }
+                    }
+                },
+                "detectRetina": true
+            });
+        });
+    </script>
+
 </body>
 </html>
+
